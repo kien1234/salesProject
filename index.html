@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kho sản phẩm tạp hóa</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Quản lý tạp hóa nhỏ</p>
+          <h1>Tra cứu giá và tồn kho</h1>
+          <p class="description">
+            Dữ liệu được đọc trực tiếp từ Google Sheets. Cập nhật sản phẩm trong
+            Sheet, sau đó bấm tải lại trên trang này.
+          </p>
+        </div>
+        <button id="reloadButton" class="button" type="button">Tải lại dữ liệu</button>
+      </section>
+
+      <section id="setupNotice" class="notice hidden">
+        <h2>Chưa cấu hình Google Sheets</h2>
+        <p>
+          Mở file <code>script.js</code> và thay giá trị
+          <code>SHEET_CSV_URL</code> bằng link CSV public của Google Sheets.
+          Xem hướng dẫn chi tiết trong <code>README.md</code>.
+        </p>
+      </section>
+
+      <section class="toolbar" aria-label="Bộ lọc sản phẩm">
+        <label class="search">
+          <span>Tìm sản phẩm</span>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Nhập tên, mã, nhóm hàng..."
+            autocomplete="off"
+          />
+        </label>
+
+        <label class="select">
+          <span>Nhóm hàng</span>
+          <select id="categoryFilter">
+            <option value="">Tất cả</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="stats" aria-label="Tổng quan kho">
+        <article>
+          <span>Sản phẩm</span>
+          <strong id="totalProducts">0</strong>
+        </article>
+        <article>
+          <span>Tổng tồn</span>
+          <strong id="totalQuantity">0</strong>
+        </article>
+        <article>
+          <span>Sắp hết</span>
+          <strong id="lowStockCount">0</strong>
+        </article>
+      </section>
+
+      <p id="statusMessage" class="status" role="status">Đang tải dữ liệu...</p>
+
+      <section class="tableWrap" aria-label="Danh sách sản phẩm">
+        <table>
+          <thead>
+            <tr>
+              <th>Mã</th>
+              <th>Tên sản phẩm</th>
+              <th>Nhóm</th>
+              <th class="number">Giá bán</th>
+              <th class="number">Tồn kho</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
