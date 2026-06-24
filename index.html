@@ -17,35 +17,45 @@
             Sheet, sau đó bấm tải lại trên trang này.
           </p>
         </div>
-        <button id="reloadButton" class="button" type="button">Tải lại dữ liệu</button>
+        <div class="heroActions">
+          <button id="reloadButton" class="button" type="button">Tải lại dữ liệu</button>
+        </div>
       </section>
 
-      <section id="setupNotice" class="notice hidden">
-        <h2>Chưa cấu hình Google Sheets</h2>
-        <p>
-          Mở file <code>script.js</code> và thay giá trị
-          <code>SHEET_CSV_URL</code> bằng link CSV public của Google Sheets.
-          Xem hướng dẫn chi tiết trong <code>README.md</code>.
-        </p>
-      </section>
+      <section class="productPanel" aria-label="Tra cứu sản phẩm">
+        <section class="toolbar" aria-label="Bộ lọc sản phẩm">
+          <label class="search">
+            <span>Tìm sản phẩm</span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Nhập tên, mã, nhóm hàng..."
+              autocomplete="off"
+            />
+          </label>
 
-      <section class="toolbar" aria-label="Bộ lọc sản phẩm">
-        <label class="search">
-          <span>Tìm sản phẩm</span>
-          <input
-            id="searchInput"
-            type="search"
-            placeholder="Nhập tên, mã, nhóm hàng..."
-            autocomplete="off"
-          />
-        </label>
+          <label class="select">
+            <span>Nhóm hàng</span>
+            <select id="categoryFilter">
+              <option value="">Tất cả</option>
+            </select>
+          </label>
+        </section>
 
-        <label class="select">
-          <span>Nhóm hàng</span>
-          <select id="categoryFilter">
-            <option value="">Tất cả</option>
-          </select>
-        </label>
+        <section class="tableWrap" aria-label="Danh sách sản phẩm">
+          <table>
+            <thead>
+              <tr>
+                <th>Mã</th>
+                <th>Tên sản phẩm</th>
+                <th>Nhóm</th>
+                <th class="number">Tồn kho</th>
+                <th>Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody id="productTableBody"></tbody>
+          </table>
+        </section>
       </section>
 
       <section class="stats" aria-label="Tổng quan kho">
@@ -65,20 +75,13 @@
 
       <p id="statusMessage" class="status" role="status">Đang tải dữ liệu...</p>
 
-      <section class="tableWrap" aria-label="Danh sách sản phẩm">
-        <table>
-          <thead>
-            <tr>
-              <th>Mã</th>
-              <th>Tên sản phẩm</th>
-              <th>Nhóm</th>
-              <th class="number">Giá bán</th>
-              <th class="number">Tồn kho</th>
-              <th>Ghi chú</th>
-            </tr>
-          </thead>
-          <tbody id="productTableBody"></tbody>
-        </table>
+      <section id="setupNotice" class="notice hidden">
+        <h2>Chưa cấu hình Google Sheets</h2>
+        <p>
+          Mở file <code>script.js</code> và thay giá trị
+          <code>SHEET_CSV_URL</code> bằng link CSV public của Google Sheets.
+          Xem hướng dẫn chi tiết trong <code>README.md</code>.
+        </p>
       </section>
     </main>
 

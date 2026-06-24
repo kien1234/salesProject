@@ -227,7 +227,7 @@ function renderTable(filteredProducts) {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.className = "empty";
-    cell.colSpan = 6;
+    cell.colSpan = 5;
     cell.textContent = "Khong tim thay san pham phu hop.";
     row.append(cell);
     elements.productTableBody.append(row);
@@ -239,12 +239,14 @@ function renderTable(filteredProducts) {
     const isLowStock = product.quantity <= LOW_STOCK_THRESHOLD;
 
     row.innerHTML = `
-      <td>${escapeHtml(product.code)}</td>
-      <td class="productName">${escapeHtml(product.name)}</td>
-      <td>${escapeHtml(product.category)}</td>
-      <td class="number">${formatCurrency(product.price)}</td>
-      <td class="number ${isLowStock ? "lowStock" : ""}">${formatNumber(product.quantity)}</td>
-      <td>${escapeHtml(product.note)}</td>
+      <td data-label="Mã">${escapeHtml(product.code)}</td>
+      <td data-label="Tên" class="productName">
+        <span>${escapeHtml(product.name)}</span>
+        <strong class="productPrice">${formatCurrency(product.price)}</strong>
+      </td>
+      <td data-label="Nhóm">${escapeHtml(product.category)}</td>
+      <td data-label="Tồn kho" class="number ${isLowStock ? "lowStock" : ""}">${formatNumber(product.quantity)}</td>
+      <td data-label="Ghi chú">${escapeHtml(product.note)}</td>
     `;
 
     elements.productTableBody.append(row);
